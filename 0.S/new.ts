@@ -23,7 +23,7 @@ const defaultFuelMaxCapacity = 100;
 
 
 let musicPlayer = new MusicPlayer(0, 50);
-let engine = new Engine();
+let engine = new Engine(false);
 let fuelTank = new FuelTank(defaultFuel,defaultFuelMileage, defaultFuelMaxCapacity);
 let car = new Car(musicPlayer, engine, fuelTank);
 

@@ -20,7 +20,7 @@ var defaultFuel = 0;
 var defaultFuelMileage = 10;
 var defaultFuelMaxCapacity = 100;
 var musicPlayer = new MusicPlayer_1.MusicPlayer(0, 50);
-var engine = new Engine_1.Engine();
+var engine = new Engine_1.Engine(false);
 var fuelTank = new FuelTank_1.FuelTank(defaultFuel, defaultFuelMileage, defaultFuelMaxCapacity);
 var car = new Car_1.Car(musicPlayer, engine, fuelTank);
 musicToggleElement.addEventListener('click', function () {
