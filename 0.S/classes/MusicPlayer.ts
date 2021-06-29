@@ -5,7 +5,10 @@ export class MusicPlayer {
      _musicLevel : number ;
      _oldMusicLevel : number;
 
-
+constructor(_musicLevel : number, _oldMusicLevel : number) {
+    this._musicLevel = _musicLevel;
+    this._oldMusicLevel = _oldMusicLevel;
+}
 //getters
 
 get musicLevel(): number {
