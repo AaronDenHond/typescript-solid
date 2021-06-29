@@ -2,10 +2,9 @@ export class Engine {
 
     private _engineStatus: boolean = false;
    
+    
 
-   constructor(_engineStatus: boolean) {
-     this._engineStatus = _engineStatus;
-   }
+   
 
 
     get engineStatus(): boolean {
@@ -20,7 +19,7 @@ export class Engine {
         this._engineStatus = false;
     }
 
-
+  
 
 }
 

@@ -2,9 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Engine = void 0;
 var Engine = /** @class */ (function () {
-    function Engine(_engineStatus) {
+    function Engine() {
         this._engineStatus = false;
-        this._engineStatus = _engineStatus;
     }
     Object.defineProperty(Engine.prototype, "engineStatus", {
         get: function () {

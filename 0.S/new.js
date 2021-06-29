@@ -16,51 +16,53 @@ var addFuelInput = document.querySelector('#add-fuel-input');
 var fuelLevelElement = document.querySelector('#fuel-level');
 var milesElement = document.querySelector('#miles-value');
 var audioElement = document.querySelector('#car-music');
+var defaultFuel = 0;
+var defaultFuelMileage = 10;
+var defaultFuelMaxCapacity = 100;
 var musicPlayer = new MusicPlayer_1.MusicPlayer(0, 50);
-var engine = new Engine_1.Engine(false);
-var fuelTank = new FuelTank_1.FuelTank(100);
-var car = new Car_1.Car();
+var engine = new Engine_1.Engine();
+var fuelTank = new FuelTank_1.FuelTank(defaultFuel, defaultFuelMileage, defaultFuelMaxCapacity);
+var car = new Car_1.Car(musicPlayer, engine, fuelTank);
 musicToggleElement.addEventListener('click', function () {
-    if (musicPlayer.musicLevel === 0) {
-        musicPlayer.turnMusicOn();
-        musicSliderElement.value = musicPlayer.musicLevel.toString();
+    if (car.musicPlayer.musicLevel === 0) {
+        car.musicPlayer.turnMusicOn();
+        musicSliderElement.value = car.musicPlayer.musicLevel.toString();
         musicToggleElement.innerText = 'Turn music off';
         return;
     }
     musicToggleElement.innerText = 'Turn music on';
-    musicPlayer.turnMusicOff();
+    car.musicPlayer.turnMusicOff();
 });
 //I use input instead of change, because then the value changes when I move the mouse, not only on release
 musicSliderElement.addEventListener('input', function (event) {
     var target = (event.target);
-    musicPlayer.musicLevel = target.value;
-    audioElement.volume = musicPlayer.musicLevel / 100;
+    car.musicPlayer.musicLevel = target.value;
+    audioElement.volume = car.musicPlayer.musicLevel / 100;
     //@todo when you are repeating the same text over and over again maybe we should have made some constants for it? Can you do improve on this?
-    musicToggleElement.innerText = musicPlayer.musicLevel ? 'Turn music off' : 'Turn music on';
+    musicToggleElement.innerText = car.musicPlayer.musicLevel ? 'Turn music off' : 'Turn music on';
 });
 engineToggleElement.addEventListener('click', function () {
-    if (engine.engineStatus) {
-        engine.turnEngineOff();
+    if (car.engine.engineStatus) {
+        car.engine.turnEngineOff();
         engineToggleElement.innerText = 'Turn engine on';
         return;
     }
     engineToggleElement.innerText = 'Turn engine off';
-    engine.turnEngineOn();
+    car.engine.turnEngineOn();
 });
 addFuelForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    fuelTank.addFuel(Number(addFuelInput.value));
-    fuelLevelElement.innerText = fuelTank.fuel.toString();
+    car.fuelTank.addFuel(Number(addFuelInput.value));
+    fuelLevelElement.innerText = car.fuelTank.toString();
 });
-// mag dit?
 setInterval(function () {
-    car.drive(true, 50);
+    car.drive();
     //while it looks like both lines below are the same there is a subtle difference (you could put breakpoints here to see the difference):
     // this <cast> will only tell TypeScript that the value is a string, but the actual variable in JS is not changed in any way: it is in reality still a number
     milesElement.innerText = (car.miles);
     // This .toString() will actually convert the value in JavaScript from an integer to a string
-    fuelLevelElement.innerText = fuelTank.fuel.toString();
-    if (musicPlayer.musicLevel === 0) {
+    fuelLevelElement.innerText = car.fuelTank.fuel.toString();
+    if (car.musicPlayer.musicLevel === 0) {
         audioElement.pause();
     }
     else {
