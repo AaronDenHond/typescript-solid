@@ -11,7 +11,7 @@ export class Car {
     }
 
 
-    drive(engineStatus: boolean, fuel: number) {
+    drive(engineStatus: boolean, fuel: number, FUEL_MILEAGE: number) {
         if(engineStatus === false || fuel <= 0) {
             //what I am doing here is a good principle called "failing early"
             // If you have some conditions you need to check, that will exclude most of the code in your function check that first
@@ -20,6 +20,7 @@ export class Car {
         }
         
         fuel -= 1;
+        
         this._miles += FUEL_MILEAGE;
     }
 

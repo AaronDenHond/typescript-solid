@@ -1,7 +1,7 @@
 export class FuelTank {
     private _fuel : number = 0;
     private readonly MAXIMUM_FUEL_CAPACITY: number;  //max fuel has to be stored so tank
-    private readonly FUEL_MILEAGE: number = 10;
+    public readonly FUEL_MILEAGE: number = 10;
 
 
     constructor(MAXIMUM_FUEL_CAPACITY: number) {
@@ -16,4 +16,3 @@ export class FuelTank {
         this._fuel = Math.min(fuel + this._fuel, this.MAXIMUM_FUEL_CAPACITY);
     }
 }
-//this is a comment

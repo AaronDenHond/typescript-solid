@@ -20,4 +20,3 @@ var FuelTank = /** @class */ (function () {
     return FuelTank;
 }());
 exports.FuelTank = FuelTank;
-//this is a comment

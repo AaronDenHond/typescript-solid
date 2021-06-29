@@ -12,7 +12,7 @@ var Car = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
-    Car.prototype.drive = function (engineStatus, fuel) {
+    Car.prototype.drive = function (engineStatus, fuel, FUEL_MILEAGE) {
         if (engineStatus === false || fuel <= 0) {
             //what I am doing here is a good principle called "failing early"
             // If you have some conditions you need to check, that will exclude most of the code in your function check that first
