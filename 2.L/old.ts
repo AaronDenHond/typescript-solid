@@ -117,5 +117,5 @@ cart.products.forEach((product) => {
     td.innerText = product.showCalculation();
     tr.appendChild(td);
 
-    tableElement.appendChild(tr);
+    tableElement!.appendChild(tr);
 });

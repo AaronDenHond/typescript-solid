@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/* import {Discount} from "./classes/Discount"; until needed*/
 var NoDiscount_1 = require("./classes/NoDiscount");
 var FixedDiscount_1 = require("./classes/FixedDiscount");
 var VariableDiscount_1 = require("./classes/VariableDiscount");
 var Shoppingbasket_1 = require("./classes/Shoppingbasket");
 var Product_1 = require("./classes/Product");
+/* type discountType = "variable" | "fixed" | "none"; we refactored this, no more need*/
 var cart = new Shoppingbasket_1.ShoppingBasket();
 cart.addProduct(new Product_1.Product('Chair', 25, new FixedDiscount_1.FixedDiscount(10)));
 //cart.addProduct(new Product('Chair', 25, new DiscountOld("fixed", -10)));
@@ -25,5 +27,6 @@ cart.products.forEach(function (product) {
     td = document.createElement('td');
     td.innerText = product.showCalculation();
     tr.appendChild(td);
+    console.log(product);
     tableElement.appendChild(tr);
 });

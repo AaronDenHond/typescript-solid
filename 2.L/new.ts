@@ -1,11 +1,11 @@
-import {Discount} from "./classes/Discount";
+/* import {Discount} from "./classes/Discount"; until needed*/
 import {NoDiscount} from "./classes/NoDiscount";
 import {FixedDiscount} from "./classes/FixedDiscount";
 import {VariableDiscount} from "./classes/VariableDiscount";
 import {ShoppingBasket} from "./classes/Shoppingbasket";
 import {Product} from "./classes/Product";
 
-type discountType = "variable" | "fixed" | "none";
+/* type discountType = "variable" | "fixed" | "none"; we refactored this, no more need*/
 
 let cart = new ShoppingBasket();
 cart.addProduct(new Product('Chair', 25, new FixedDiscount( 10)));
@@ -32,6 +32,6 @@ cart.products.forEach((product) => {
     td = document.createElement('td');
     td.innerText = product.showCalculation();
     tr.appendChild(td);
-
-    tableElement.appendChild(tr);
+    console.log(product);
+    tableElement!.appendChild(tr);
 });
